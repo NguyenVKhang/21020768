@@ -1,12 +1,12 @@
 # 21020768
 
-1. Hướng dẫn cài đặt:
+1. Hướng dẫn cài đặt: đẩy code về và chạy file main.exe
 
 2. Mô tả chung về trò chơi, các ý tưởng chính:
 Sokoban (倉庫 番, Sōko-ban ) là một thể loại trò chơi điện tử giải đố , trong đó người chơi đẩy các thùng hoặc hộp xung quanh trong một nhà kho , cố gắng đưa chúng đến vị trí cất giữ.
 Trò chơi được chơi trên một bảng hình vuông , trong đó mỗi ô vuông là một tầng hoặc một bức tường. Một số ô vuông sàn chứa các hộp và một số ô vuông sàn được đánh dấu là vị trí lưu trữ.
 Người chơi bị giới hạn trong bàn cờ và có thể di chuyển theo chiều ngang hoặc chiều dọc trên các ô trống (không bao giờ xuyên qua tường hoặc hộp). Người chơi có thể di chuyển một chiếc hộp bằng cách đi đến gần nó và đẩy nó đến hình vuông bên kia. Các hộp không thể được kéo và không thể đẩy chúng vào các hình vuông có tường hoặc các hộp khác. Số lượng hộp bằng số vị trí lưu trữ. Câu đố được giải khi tất cả các hộp được đặt tại các vị trí cất giữ.
-3. Mô tả các chức năng đã cài đặt, kèm video minh họa (chèn link video youtube):
+3. Mô tả các chức năng đã cài đặt, kèm video minh họa (chèn link video youtube):https://youtu.be/dFt-hh5vhtg.
 Thêm nhạc, chuyển động animation, vv (video chi tiết :)
 4. Các kỹ thuật lập trình được sử dụng trong chương trình (mảng, con trỏ, cấu trúc, lớp, đồ họa ...):
 -Sử dụng các thư viện của SDL
