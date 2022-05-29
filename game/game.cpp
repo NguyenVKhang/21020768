@@ -113,6 +113,7 @@ void gameLoops(SDL_Renderer* renderer, SDL_Event &event, status& statusGame, boo
     int step = 0;
     Uint32 time = 0;
     time = SDL_GetTicks();
+    SDL_Color text_color = {104, 75, 56, 255};
     specsGame specs_game;
     specs_game.loadSpecsGame(level);
     stringstream link;
@@ -133,8 +134,28 @@ void gameLoops(SDL_Renderer* renderer, SDL_Event &event, status& statusGame, boo
                 gameRun = false;
                 quit = true;
             }
-            mapGame.handelInput(event, renderer, step, animationOj);
             margin.handleMouseMargin(event, statusGame, quit, level, font, gameRun, step, mapGame);
+            mapGame.handelInput(event, renderer, step, animationOj);
+        }
+        if(margin.step != step){
+            margin.step = step;
+            stringstream text_step;
+            text_step << "Step: " << step << "    ";
+            margin.textStep.free();
+            if(!margin.textStep.loadFromRenderedText(text_step.str().c_str(), text_color, renderer, font)){
+                cout << "load anh textStep khong thanh cong " << SDL_GetError();
+            }
+            else margin.textStep.setRect(1000, 120, 240, 60);
+        }
+        if(margin.time != (SDL_GetTicks() - time)/1000){
+            stringstream text_time;
+            margin.time = (SDL_GetTicks() - time)/1000;
+            margin.textTime.free();
+            text_time << "Time: "<< margin.time <<"s";
+            if(!margin.textTime.loadFromRenderedText(text_time.str().c_str(), text_color, renderer, font)){
+                cout << "load anh textTime khong thanh cong " << SDL_GetError();
+            }
+            else margin.textTime.setRect(1000, 200, 240, 60);
         }
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
@@ -167,6 +188,8 @@ void gameLoops(SDL_Renderer* renderer, SDL_Event &event, status& statusGame, boo
 
 void loadImgMargin(ObjectGame& margin, SDL_Renderer* render, int level, TTF_Font* font, int step, specsGame specs_game){
     SDL_Color text_color = {104, 75, 56, 255};
+    margin.step = 0;
+    margin.time = 0;
     if(!margin.home.loadImg("img/home.png", render)){
         cout << "load margin home khong thanh cong" << SDL_GetError();
     }
@@ -203,7 +226,20 @@ void loadImgMargin(ObjectGame& margin, SDL_Renderer* render, int level, TTF_Font
         cout << "load anh textStepMin khong thanh cong " << SDL_GetError();
     }
     else margin.textStepMin.setRect(1000, 380, 240, 60);
-
+    stringstream text_step;
+    text_step << "Step: " << step << "    ";
+    margin.textStep.free();
+    if(!margin.textStep.loadFromRenderedText(text_step.str().c_str(), text_color, render, font)){
+        cout << "load anh textStep khong thanh cong " << SDL_GetError();
+    }
+    else margin.textStep.setRect(1000, 120, 240, 60);
+    stringstream text_time;
+    margin.textTime.free();
+    text_time << "Time: 0s";
+    if(!margin.textTime.loadFromRenderedText(text_time.str().c_str(), text_color, render, font)){
+        cout << "load anh textTime khong thanh cong " << SDL_GetError();
+    }
+    else margin.textTime.setRect(1000, 200, 240, 60);
 }
 
 void showGameMarginBot(ObjectGame margin, SDL_Renderer* render){
@@ -246,20 +282,8 @@ void showGameMarginTop(ObjectGame margin, SDL_Renderer* renderer, TTF_Font* font
     SDL_RenderFillRect(renderer, &marginBackground);
     margin.textLevel.render(renderer);  
     SDL_Color text_color = {104, 75, 56, 255};
-    stringstream text_step;
-    text_step << "Step: " << step << "    ";
-    if(!margin.textStep.loadFromRenderedText(text_step.str().c_str(), text_color, renderer, font)){
-        cout << "load anh textStep khong thanh cong " << SDL_GetError();
-    }
-    else margin.textStep.setRect(1000, 120, 240, 60);
     margin.textStep.render(renderer);
     margin.textLevel.render(renderer);  
-    stringstream text_time;
-    text_time << "Time: " << (SDL_GetTicks() - time)/1000 <<"s";
-    if(!margin.textTime.loadFromRenderedText(text_time.str().c_str(), text_color, renderer, font)){
-        cout << "load anh textTime khong thanh cong " << SDL_GetError();
-    }
-    else margin.textTime.setRect(1000, 200, 240, 60);
     margin.textTime.render(renderer);
     SDL_SetRenderDrawColor(renderer, 218, 165, 32, 255);
     for(int i = 0; i < 5; i++){
