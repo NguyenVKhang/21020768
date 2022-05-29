@@ -1,6 +1,6 @@
 # 21020768
 
-1. Hướng dẫn cài đặt: đẩy code về và chạy file main.exe
+1. Hướng dẫn cài đặt: tải code tại https://drive.google.com/drive/folders/18Eq5zPDocKxqqQVs5kz8XN7yQvewcbdI?usp=sharing. Sau đó chạy file main.exe
 
 2. Mô tả chung về trò chơi, các ý tưởng chính:
 Sokoban (倉庫 番, Sōko-ban ) là một thể loại trò chơi điện tử giải đố , trong đó người chơi đẩy các thùng hoặc hộp xung quanh trong một nhà kho , cố gắng đưa chúng đến vị trí cất giữ.
