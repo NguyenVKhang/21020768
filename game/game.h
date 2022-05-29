@@ -7,6 +7,8 @@
 #include "mixer.h"
 
 struct ObjectGame{
+    int step;
+    int time;
     baseObject home;
     baseObject restart;
     baseObject undo;
